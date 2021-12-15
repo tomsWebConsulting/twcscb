@@ -1,0 +1,97 @@
+<script>
+
+  $( ( ) => {
+  
+    /*
+    
+      close forced mobile menu on desktop when clicking outside of menu
+      
+      Version       : 0.2d0
+      
+      SS Version    : 7.1
+      
+      Dependancies  : jQuery
+      
+      By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
+      
+      no user serviceable parts below
+      
+      */
+      
+    // bail if no mutation observer available
+    
+    if ( ! ( 'MutationObserver' in window ) ) return;
+    
+    const $burgerButton = $( '.header-burger-btn:first' );
+    
+    const $btn = $( '<div id="twc-burger-close-button" style="' +
+    
+      'bottom : 0; display : none; left : 0; right : 0; top : 0; ' +
+      
+      'position : fixed; z-index : 9">' )
+      
+      .click ( function ( ) {
+      
+        $burgerButton.click ( );
+        
+        } )
+        
+      .appendTo ( '.header-menu' );
+      
+    let isHeaderMenuOpen = false;
+    
+    $( window ).resize ( function ( ) {
+    
+      const left = $( '.header-menu' )
+      
+        .offset ( )
+        
+        .left;
+        
+      let display = 'none';
+      
+      if ( left && isHeaderMenuOpen ) {
+      
+        const width = $( window ).width ( );
+        
+        const right = width - left;
+        
+        $btn.css ( 'right', right );
+        
+        display = 'block';
+        
+        }
+        
+      $btn.css ( 'display', display );
+      
+      } );
+      
+    const observer = new MutationObserver ( function ( mutations ) {
+    
+      $.each ( mutations, function ( ) {
+      
+        // bail if not class attribute
+        
+        if ( this.attributeName != 'class' ) return;
+        
+        const $e = $( this.target );
+        
+        isHeaderMenuOpen = $e.hasClass ( 'header--menu-open' );
+        
+        $( window ).resize ( );
+        
+        } );
+        
+      } );
+      
+    // start listening for changes in specified element
+    
+    observer.observe ( $( 'body' ) [ 0 ], {
+    
+      attributes : true
+      
+      } );
+      
+    } );
+    
+  </script>
