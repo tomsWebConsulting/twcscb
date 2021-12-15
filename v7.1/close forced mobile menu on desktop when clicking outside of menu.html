@@ -4,9 +4,9 @@
   
     /*
     
-      close forced mobile menu on desktop when clicking outside of menu
+      begin close forced mobile menu on desktop when clicking outside of menu
       
-      Version       : 0.2d0
+      Version       : 0.3d0
       
       SS Version    : 7.1
       
@@ -14,10 +14,10 @@
       
       By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
       
-      no user serviceable parts below
-      
       */
       
+    // do not change anything below, there be the borg here
+    
     // bail if no mutation observer available
     
     if ( ! ( 'MutationObserver' in window ) ) return;
@@ -36,27 +36,27 @@
         
         } )
         
-      .appendTo ( '.header-menu' );
+      .appendTo ( 'body' );
       
     let isHeaderMenuOpen = false;
     
     $( window ).resize ( function ( ) {
     
-      const left = $( '.header-menu' )
-      
-        .offset ( )
-        
-        .left;
-        
       let display = 'none';
       
-      if ( left && isHeaderMenuOpen ) {
+      if ( isHeaderMenuOpen ) {
       
-        const width = $( window ).width ( );
+        const left = $( '.header-menu' )
         
-        const right = width - left;
+          .offset ( )
+          
+          .left;
+          
+        const width = $( '.header-menu' ).width ( );
         
-        $btn.css ( 'right', right );
+        const side = left ? 'right' : 'left';
+        
+        $btn.css ( side, width );
         
         display = 'block';
         
@@ -86,7 +86,7 @@
       
     // start listening for changes in specified element
     
-    observer.observe ( $( 'body' ) [ 0 ], {
+    observer.observe ( $( 'body' ).get ( 0 ), {
     
       attributes : true
       
