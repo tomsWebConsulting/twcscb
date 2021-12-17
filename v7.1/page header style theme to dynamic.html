@@ -1,0 +1,96 @@
+<script>
+
+  $( ( ) => {
+  
+    /*
+    
+      page header style theme to dynamic
+      
+      Version       : 0.1d0
+      
+      SS Version    : 7.1
+      
+      Dependancies  : jQuery
+      
+      By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
+      
+      no user serviceable parts below
+      
+      */
+      
+    if ( window.frameElement !== null ) return; // bail if in preview
+    
+    // bail if header not style theme
+    
+    if ( ! $( 'header[data-header-style="theme"]' ).length ) return;
+    
+    const dataHeaderStyleAttribute = 'data-header-style';
+    
+    const headerStyle = 'dynamic';
+    
+    const themeClasses = [
+    
+      'black-bold',
+      'black',
+      'bright-inverse',
+      'bright',
+      'dark-bold',
+      'dark',
+      'light-bold',
+      'light',
+      'white-bold',
+      'white'
+      
+      ]
+      
+      .join ( ' ' );
+      
+    const $header = $( '#header' );
+    
+    const updateDataCurrentStylesAttribute = $element => {
+    
+      const attribute = 'data-current-styles';
+      
+      let json = $element.attr ( attribute );
+      
+      json = JSON.parse ( json );
+      
+      json.headerStyle = headerStyle;
+      
+      json = JSON.stringify ( json, null, 1 );
+      
+      $element.attr ( attribute, json );
+      
+      };
+      
+    $( 'body' ).addClass ( 'tweak-transparent-header' );
+    
+    $header
+    
+      .attr ( dataHeaderStyleAttribute, headerStyle )
+      
+      .removeClass ( themeClasses )
+      
+      .find ( '.header-border' )
+      
+        .css ( 'border-width', '0px !important' )
+        
+        .end ( )
+    
+      .find ( '.header-dropshadow' )
+      
+        .attr ( dataHeaderStyleAttribute, headerStyle )
+        
+      .find ( '.header-inner' )
+      
+        .css ( 'padding', '0' );
+        
+    updateDataCurrentStylesAttribute ( $header );
+    
+    const $element = $( '.header-menu', $header );
+    
+    updateDataCurrentStylesAttribute ( $element );
+    
+    } );
+    
+  </script>
