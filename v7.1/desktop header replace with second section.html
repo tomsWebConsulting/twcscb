@@ -1,0 +1,41 @@
+<style>
+
+  /*
+  
+    begin desktop header replace with second section
+    
+    Version       : 0.1d0
+    
+    SS Version    : 7.1
+    
+    Dependancies  : page section first blank hide
+    
+    By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
+    
+    */
+    
+    #header {
+    
+      display : none;
+      
+      }
+      
+    @media only screen and ( pointer : coarse ) and ( max-width : 1024px ), screen and ( max-width : 799px ) {
+    
+      #header {
+      
+        display : unset;
+        
+        }
+        
+      .page-section:nth-child( 2 ) {
+      
+        display : none;
+        
+        }
+        
+      }
+      
+    /* end desktop header replace with second section */
+    
+  </style>
