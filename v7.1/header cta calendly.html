@@ -1,0 +1,41 @@
+<script>
+
+  /*
+  
+    begin header cta calendly
+    
+    Version     : 0.1d0
+    
+    SS Version  : 7.1
+    
+    By          : Thomas Creedon < http://www.tomsWeb.consulting/ >
+    
+    */
+    
+    const url = '[enter calendly url here between single quotes]';
+    
+    // do not change anything below, there be the borg here
+    
+    window.addEventListener ( 'DOMContentLoaded', ( ) => {
+    
+      const cta =
+      
+        document.querySelectorAll ( '.header-actions-action--cta .btn' );
+        
+      cta.forEach ( item => {
+      
+        item.onclick = event => {
+        
+          Calendly.initPopupWidget ( { 'url' : url } );
+          
+          return false;
+          
+          };
+          
+        } );
+        
+      } );
+      
+    /* end header cta calendly */
+    
+  </script>
