@@ -4,7 +4,7 @@
   
     begin header cta calendly
     
-    Version     : 0.1d0
+    Version     : 0.1d1
     
     SS Version  : 7.1
     
@@ -18,10 +18,18 @@
     
     window.addEventListener ( 'DOMContentLoaded', ( ) => {
     
-      const cta =
+      const selector = [
       
-        document.querySelectorAll ( '.header-actions-action--cta .btn' );
+        '.header-actions-action--cta .btn', // desktop
         
+        '.header-menu .header-menu-cta' // mobile
+        
+        ]
+        
+        .join ( ', ' );
+        
+      const cta = document.querySelectorAll ( selector );
+      
       cta.forEach ( item => {
       
         item.onclick = event => {
