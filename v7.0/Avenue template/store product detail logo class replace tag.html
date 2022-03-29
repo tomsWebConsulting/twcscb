@@ -1,0 +1,57 @@
+<script>
+
+  $( ( ) => {
+  
+    /*
+    
+      store product detail logo class replace tag
+      
+      Version       : 0.1d0
+      
+      SS Version    : 7.0
+      
+      v7.0 Template : Avenue
+      
+      Dependancies  : jQuery
+                      
+                      twcsl
+      
+      Note          : the replacement element is not a deep copy
+      
+      By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
+      
+      */
+      
+    const tagName = 'h2';
+    
+    // do not change anything below, there be the borg here
+    
+    if ( ! twcsl.page.store.detail.is ) return; // bail if not detail
+    
+    const attributes = { };
+    
+    const $element = $( '.logo' );
+    
+    $.each ( $element [ 0 ].attributes, function ( i, attribute ) {
+    
+      if ( attribute.nodeName == 'id' ) return;
+      
+      attributes [ attribute.nodeName ] = attribute.nodeValue;
+      
+      } );
+      
+    $element.replaceWith ( function ( ) {
+    
+      const $contents = $element.contents ( );
+      
+      const $newElement = $( `<${ tagName }>`, attributes )
+      
+        .append ( $contents );
+        
+      return $newElement;
+      
+      } );
+      
+    } );
+    
+  </script>

@@ -1,0 +1,57 @@
+<script>
+
+  /*
+  
+    is sku trigger
+    
+    Version       : 0.1d0
+    
+    SS Versions   : 7.1, 7.0
+    
+    Dependancies  : jQuery
+                    
+                    move product detail additional info first n blocks to end of
+                    product details v0.3d0
+    
+    By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
+    
+    */
+    
+  const isSkuTrigger = ( ) => {
+  
+    const skuTriggers = [
+    
+      /*
+      
+        the format of each line is a sku as appears in the SS product editing
+        interface
+        
+        copy and repeat the line below for each sku you want to trigger the
+        behaviour of the calling code, remove the "// " at the beginning of the
+        line and enter the appropriate data. this has been done once initially
+        
+        */
+        
+      // '[enter sku here between single quotes]',
+      
+      '[enter sku here between single quotes]',
+      
+      ];
+      
+    // do not change anything below, there be the borg here
+    
+    const skus = $.map ( Static.SQUARESPACE_CONTEXT.product.variants,
+    
+      function ( v ) {
+      
+        return ( v.sku );
+        
+        } );
+        
+    const b = skus.some ( r => skuTriggers.indexOf ( r ) >= 0 );
+    
+    return b;
+    
+    };
+    
+  </script>

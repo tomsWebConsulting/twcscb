@@ -1,0 +1,101 @@
+<script>
+
+  const hasCartChanged = $element => {
+  
+    /*
+    
+      has cart changed
+      
+      Version       : 0.1d0
+      
+      SS Versions   : 7.1, 7.0
+      
+      Dependancies  : jQuery
+      
+      Note          : cart page observe changes
+      
+      By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
+      
+      */
+      
+    let selector = 'cart-container';
+    
+    if ( ! $element.hasClass ( selector ) ) return;
+    
+    const key = 'ssCartDigestHex';
+    
+    const digestHexOriginal = localStorage.getItem ( key );
+    
+    const digestMessage = async ( message ) => {
+    
+      const msgUint8 = new TextEncoder ( ) // encode as (utf-8) Uint8Array
+      
+        .encode ( message );
+        
+      const hashBuffer = await crypto // hash the message
+      
+        .subtle
+        
+        .digest ( 'SHA-1', msgUint8 );
+        
+      // convert buffer to byte array
+      
+      let hashArray = new Uint8Array ( hashBuffer )
+      
+      hashArray = Array.from ( hashArray );
+      
+      const hashHex = hashArray // convert bytes to hex string
+      
+        .map ( b => b.toString ( 16 ).padStart ( 2, '0' ) )
+        
+        .join ( '' );
+        
+      return hashHex;
+  
+      };
+    
+    const text = $element
+    
+      .parents ( '#sqs-cart-container' )
+      
+      .html ( );
+      
+    const $status = $( `<div>
+    
+      <p class="twc-has-cart-changed">
+      
+        Checking please hold...
+        
+        </p>
+        
+      </div>` )
+      
+      .prependTo ( '.system-page' )
+      
+      .find ( ':last' );
+      
+    digestMessage ( text )
+    
+      .then ( digestHex => {
+      
+        let text;
+        
+        localStorage.setItem ( key, digestHex );
+        
+        if ( digestHex == digestHexOriginal || digestHexOriginal == null ) {
+        
+          text = 'The cart appears not to have changed.';
+          
+          } else {
+          
+            text = 'The cart has changed! 🤯';
+            
+            }
+            
+        $status.text ( text );
+        
+        } );
+        
+    };
+    
+  </script>

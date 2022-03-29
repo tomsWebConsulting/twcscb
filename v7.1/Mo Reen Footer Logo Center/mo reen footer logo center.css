@@ -1,0 +1,37 @@
+/*
+
+  begin mo reen footer logo center
+  
+  Version         : 0.1d0
+  
+  SS Version      : 7.1
+  
+  Note            : this effect is not active in SS Preview to test it use
+                    private browsing < https://bit.ly/3f6lhq2 >
+  
+  By              : Thomas Creedon < http://www.tomsWeb.consulting/ >
+  
+  no user serviceable parts below
+  
+  */
+  
+  @media screen and ( min-width : 992px ) {
+  
+    html:not( .squarespace-damask ) #page-section-61dc90df7344e214475b9ade > .sqs-row .sqs-col-12 > .sqs-row {
+    
+      align-items : center;
+      display : flex;
+      
+      }
+      
+    html:not( .squarespace-damask ) .footer-logo {
+    
+      --translateX : 0;
+      
+      transform: translateX( var( --translateX ) );
+      
+      }
+      
+    }
+    
+  /* end mo reen footer logo center */

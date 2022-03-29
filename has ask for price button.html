@@ -1,0 +1,46 @@
+<script>
+
+  /*
+  
+    has ask for price button
+    
+    Version         : 0.1d0
+    
+    SS Versions     : 7.1, 7.0
+    
+    v7.0 Templates  : Brine ( Aria, Blend, Burke, Cacao, Clay, Fairfield, Feed,
+                      Foster, Greenwich, Hatch, Heights, Hunter, Hyde, Impact,
+                      Jaunt, Juke, Keene, Kin, Lincoln, Maple, Margot, Marta,
+                      Mentor, Mercer, Miller, Mojave, Moksha, Motto, Nueva,
+                      Pedro, Pursuit, Rally, Rover, Royce, Sofia, Sonora,
+                      Stella, Thorne, Vow, Wav, West )
+                    
+                      your template is not listed? then it is not currently
+                      supported
+  
+    Dependancies    : jQuery
+                    
+                      move product detail additional info first n blocks to end
+                      of product details v0.3d0
+    
+    By              : Thomas Creedon < http://www.tomsWeb.consulting/ >
+    
+    */
+    
+  const hasAskForPriceButton = ( ) => {
+  
+    const urlBeginsWith = '[enter beginning of url here between single quotes]';
+    
+    // do not change anything below, there be the borg here
+    
+    const $elements =
+    
+      $( `.ProductItem-additional [href^="${ urlBeginsWith }"]` );
+      
+    const b = Boolean ( $elements.length );
+    
+    return b;
+    
+    };
+    
+  </script>

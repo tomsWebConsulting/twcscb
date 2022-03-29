@@ -1,0 +1,46 @@
+/*
+
+  begin mindbody link style as button
+  
+  Version       : 0.1d0
+  
+  SS Version    : 7.1
+  
+  By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
+  
+  */
+  
+  .healcode-link {
+
+    --background-color : #15a1af;
+    --border-radius : 300px;
+    --color : white;
+  
+    }
+
+  /* do not change anything below, there be the borg here */
+  
+  body:not( .header--menu-open ) .white-bold .header-nav-item--active .healcode-link {
+
+    all : unset;
+  
+    background-color : var( --background-color );
+    border-color : var( --background-color );
+    border-radius : var( --border-radius );
+    color : var( --color ) !important;
+    cursor : pointer;
+    padding : 0.8em 1.336em;
+  
+    }
+  
+  @media ( hover : hover ) {
+
+    .primary-button-style-solid .site-wrapper .healcode-link:hover {
+  
+      opacity : 0.8 !important;
+    
+      }
+    
+    }
+    
+  /* end mindbody link style as button */

@@ -1,0 +1,88 @@
+<script>
+
+  $( ( ) => {
+  
+    /*
+    
+      mo reen footer logo center
+      
+      Version         : 0.1d0
+      
+      SS Version      : 7.1
+      
+      Dependancies    : jQuery
+    
+      Note            : this effect is not active in SS Preview to test it use
+                        private browsing < https://bit.ly/3f6lhq2 >
+      
+      By              : Thomas Creedon < http://www.tomsWeb.consulting/ >
+      
+      no user serviceable parts below
+      
+      */
+      
+    if ( window.frameElement !== null ) return; // bail if in preview
+    
+    $( window )
+    
+      .resize ( function ( ) {
+      
+        let selector = '#page-section-61dc90df7344e214475b9ade > ' +
+        
+          '.sqs-row .sqs-col-12 > .sqs-row';
+          
+        const $container = $( selector );
+        
+        const $logo = $( '.footer-logo', $container );
+        
+        const imageLeft = $logo
+        
+          .get ( 0 )
+          
+          .getBoundingClientRect ( )
+          
+          .left;
+          
+        selector = '.col:last .field-element[name="email"]';
+        
+        const newsletterLeft = $( selector, $container )
+        
+          .get ( 0 )
+          
+          .getBoundingClientRect ( )
+          
+          .left;
+          
+        selector = '.col:first .sqs-block-socialaccountlinks-v2 ' +
+        
+          '.sqs-svg-icon--wrapper:last';
+          
+        const socialLastRight = $( selector, $container )
+        
+          .get ( 0 )
+          
+          .getBoundingClientRect ( )
+          
+          .right;
+          
+        let translateX = newsletterLeft;
+        
+        translateX -= socialLastRight;
+        
+        translateX /= 2;
+        
+        translateX += socialLastRight;
+        
+        translateX -= imageLeft;
+        
+        translateX -= 45; // image width / 2
+        
+        $logo.css ( '--translateX', `${ translateX }px` );
+        
+        } )
+        
+      .resize ( );
+      
+    } );
+    
+  </script>
