@@ -1,0 +1,71 @@
+<script>
+
+  $( ( ) => {
+  
+    /*
+    
+      begin header navigation projects link active on "project" pages
+      
+      Version         : 0.1d0
+      
+      SS Version      : 7.0
+      
+      v7.0 Templates  : Wexley
+                        
+                        your template is not listed? then it is not currently
+                        supported
+      
+      Dependancies    : jQuery
+      
+      By              : Thomas Creedon < http://www.tomsWeb.consulting/ >
+      
+      */
+      
+      let nonProjectPageUrls = [
+      
+      /*
+      
+        the format of each line is a page url slug, copy the value from Page
+        Settings > General > URL SLUG field. you only need exactly what can be
+        selected from the field
+        
+        following is an example line. copy the example line below and paste
+        after the example line. remove '// ' at beginning of pasted line. repeat
+        for as many url slugs where you don't want the effect active
+        
+        */
+        
+        // '[enter url slug here between single quotes]',
+        
+        'about-1',
+        'news',
+        
+        ];
+        
+      // do not change anything below, there be the borg here
+      
+      nonProjectPageUrls = $.map ( nonProjectPageUrls, function ( slug ) {
+      
+        const url = `/${ slug }`;
+        
+        return url;
+        
+        } );
+        
+      // bail if not "project" page
+      
+      const b = nonProjectPageUrls.includes ( location.pathname );
+      
+      if ( b ) return;
+      
+      $( '#topNav nav li a[href="/"]' )
+      
+        .parent ( )
+        
+        .addClass ( 'active-link' );
+        
+      // end header navigation projects link active on "project" pages
+      
+    } );
+    
+  </script>
