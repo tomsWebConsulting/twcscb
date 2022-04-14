@@ -1,0 +1,35 @@
+/* begin navigation sign in last */
+
+  .user-account-link {
+  
+    order : 1;
+    
+    }
+    
+  #mainNavigation,
+  #mobileNavigation
+  
+    {
+    
+      display : flex;
+      
+      }
+  
+  /* desktop */
+  
+  #mainNavigation {
+  
+    align-items : center;
+    justify-content : flex-end;
+    
+    }
+    
+  /* mobile */
+  
+  #mobileNavigation {
+  
+    flex-direction : column;
+    
+    }
+    
+  /* end navigation sign in last */
