@@ -1,0 +1,32 @@
+/* 
+
+  begin header user accounts login text change
+  
+  Version     : 0.1.0
+  
+  SS Version  : 7.1
+  
+  Note        : uses LESS syntax
+  
+  By          : Thomas Creedon < http://www.tomsWeb.consulting/ >
+  
+  */
+
+  .user-accounts-link .user-accounts-text-link .unauth {
+  
+    --twc-hualtc-text : '[enter link text here between single quotes]';
+    
+    /* do not change anything below, there be the borg here */
+    
+    visibility : hidden;
+    
+    &::after {
+    
+      content : var( --twc-hualtc-text );
+      visibility : visible;
+      
+      }
+      
+    }
+    
+  // end header user accounts login text change
