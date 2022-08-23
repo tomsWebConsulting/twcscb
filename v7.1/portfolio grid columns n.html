@@ -4,7 +4,7 @@
   
     begin portfolio grid columns n
     
-    Version     : 0.1d0
+    Version     : 0.2.0
     
     SS Version  : 7.1
     
@@ -12,15 +12,18 @@
     
     */
     
-    .portfolio-grid-basic {
+    .portfolio-grid-basic,
+    .portfolio-grid-overlay
     
-      --columns : 5;
-      
-      /* do not change anything below, there be the borg here */
+      {
     
-      grid-template-columns : repeat( var( --columns ), minmax( 0, 1fr ) );
+        --columns : 5;
       
-      }
+        /* do not change anything below, there be the borg here */
+    
+        grid-template-columns : repeat( var( --columns ), minmax( 0, 1fr ) );
+      
+        }
       
     /* end portfolio grid columns n */
     
