@@ -4,7 +4,7 @@
   
     blog post author sort
     
-    Version       : 0.1.0
+    Version       : 0.2.0
     
     By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
     
@@ -14,7 +14,7 @@
     
   const jQueryUrl =
   
-    'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js';
+    'https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js';
     
   const affixScriptToHead = ( url, callback ) => {
   
@@ -42,11 +42,15 @@
     
   const callback = ( ) => {
   
-    const $list = $( '._PSLAFTpMAnwt6u56FZf' );
+    const title = 'blog post author sort - twc';
     
-    if ( ! $list.length ) return; // bail if no list
+    const $list = $( `p[title="${ title }"]` )
     
-    const authors = $( 'li', $list ).map ( function ( ) {
+      .parents ( 'ul[role="listbox"]' );
+    
+    if ( ! $list.length ) return; // bail if no list items
+    
+    let authors = $( 'li', $list ).map ( function ( ) {
     
       const text = $( this )
       
@@ -56,15 +60,31 @@
         
       return text;
       
-      } )
+      } );
       
-      .sort ( );
+    authors = $.makeArray ( authors )
+    
+      .sort ( )
+      
+      .reverse ( )
+      
+      .filter ( author => author != '' );
       
     $.each ( authors, function ( i, author ) {
     
-      $( `li:contains('${ author }')`, $list )
+      if ( ! author ) return true; // continue if empty
       
-        .appendTo ( $list );
+      const $item = $( `li:contains('${ author }')`, $list );
+      
+      if ( author == title ) {
+      
+        $item.remove ( );
+        
+        return true; // continue
+        
+        }
+        
+      $item.prependTo ( $list );
         
       } );
       
