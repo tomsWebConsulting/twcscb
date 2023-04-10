@@ -1,0 +1,61 @@
+<script>
+
+  /*
+  
+    header class add when first page section out of viewport desktop
+    
+    License       : < https://bit.ly/3MtSOLx >
+  
+    Version       : 0.1.0
+    
+    SS Version    : 7.1
+    
+    Dependencies  : jQuery
+    
+    By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
+    
+    no user serviceable parts below
+    
+    */
+    
+    window.addEventListener ( 'DOMContentLoaded', ( ) => {
+    
+      window.addEventListener ( 'scroll', ( ) => {
+      
+        const mediaQueryString = 'only screen and ( pointer : coarse) and ' +
+        
+          '( max-width : 1024px ), screen and ( max-width : 799px )';
+          
+        const isMobile = matchMedia ( mediaQueryString )
+        
+          .matches;
+          
+        if ( isMobile ) return; // bail if mobile
+        
+        let selector = '#page .page-section:first-child';
+        
+        const { bottom } = document
+        
+          .querySelector ( selector )
+          
+          .getBoundingClientRect ( );
+          
+        if ( bottom > 0 ) return; // bail if greater than zero
+        
+        selector = 'header-display-desktop';
+        
+        document
+        
+          .getElementsByClassName ( selector )
+          
+          [ 0 ]
+          
+          .classList
+          
+          .add ( 'twc-hcawfpsoovd' );
+          
+        } );
+        
+      } );
+      
+  </script>
