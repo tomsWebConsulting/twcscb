@@ -6,7 +6,7 @@
     
     License       : < https://bit.ly/3MtSOLx >
   
-    Version       : 0.1.0
+    Version       : 0.1.1
     
     SS Version    : 7.1
     
@@ -32,6 +32,8 @@
           
         if ( isMobile ) return; // bail if mobile
         
+        const clss = 'twc-hcawfpsoovd';
+        
         let selector = '#page .page-section:first-child';
         
         const { bottom } = document
@@ -40,19 +42,23 @@
           
           .getBoundingClientRect ( );
           
-        if ( bottom > 0 ) return; // bail if greater than zero
-        
         selector = 'header-display-desktop';
         
-        document
+        const classList = document
         
           .getElementsByClassName ( selector )
           
           [ 0 ]
           
-          .classList
+          .classList;
           
-          .add ( 'twc-hcawfpsoovd' );
+        if ( bottom < 0 )
+        
+          classList.add ( clss );
+          
+          else
+          
+            classList.remove ( clss );
           
         } );
         
