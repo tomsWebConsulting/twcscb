@@ -4,6 +4,8 @@
   
     blog post author sort
     
+    License       : < https://bit.ly/3MtSOLx >
+    
     Version       : 0.2.0
     
     By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
