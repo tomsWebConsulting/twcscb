@@ -1,0 +1,58 @@
+<script>
+
+  $( ( ) => {
+  
+    /*
+    
+      begin element url string random
+      
+      License       : < https://bit.ly/3MtSOLx >
+      
+      Version       : 0.2.0
+      
+      SS Version    : 7.1
+      
+      Dependencies  : jQuery
+      
+      By            : Thomas Creedon < http://www.tomsWeb.consulting/ >
+      
+      */
+      
+    const selector = '[enter selector here between single quotes replacing square brackets]';
+    
+    const urlPrefix = '[enter url prefix here between single quotes replacing square brackets]';
+    
+    const strings = [
+    
+      /*
+      
+        following is an example string line. copy the example string line below
+        and paste after the example string line. remove the double forward
+        slash from before the example string line. repeat for as many strings
+        you want to randomly choose from. this has been done once initially
+        
+        */
+        
+      // 'an example string',
+      
+      '[enter string here between single quotes replacing square brackets]',
+      
+      ];
+      
+    // do not change anything below, there be the borg here
+    
+    const i = Math.floor ( Math.random ( ) * strings.length );
+    
+    const string = strings [ i ];
+    
+    const url = urlPrefix + string;
+    
+    $( selector )
+    
+      .attr ( 'href', url );
+      
+    // end element url string random
+    
+    } );
+    
+  </script>
