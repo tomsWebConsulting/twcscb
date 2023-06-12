@@ -1,0 +1,40 @@
+<style>
+
+  /* store product detail price move to right of title desktop */
+  
+  .ProductItem-details .product-price {
+  
+    order : 1;
+    
+    }
+    
+  @media screen and ( mix-width : 641px ) {
+  
+    .ProductItem-details:not( .ProductItem-details--mobile ) {
+    
+      display : grid;
+      grid-template-columns : repeat( 5, 1fr );
+      
+      }
+      
+    .ProductItem-details > * {
+    
+      grid-column : 1 / 6;
+      
+      }
+      
+    .ProductItem-details h1.ProductItem-details-title {
+    
+      grid-column : 1 / 3;
+      
+      }
+      
+    .ProductItem-details .product-price {
+    
+      grid-column : 3 / 6;
+      
+      }
+      
+    }
+    
+  </style>
