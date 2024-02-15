@@ -1,0 +1,99 @@
+<!--
+
+  begin store page detail price right of quantity
+  
+  License     : < http://tinyurl.com/bdhte7xp >
+  
+  Version     : 0.1.0
+  
+  SS Version  : 7.1
+  
+  Notes       : the code is comprised of two style tags. both are needed for the
+                effect to work
+                
+  By          : Thomas Creedon < http://www.tomsWeb.consulting/ >
+  
+  -->
+  
+  <style>
+  
+    .ProductItem-details .ProductItem-details-checkout {
+    
+      --twc-spdproq-gap : 2rem; /* grid gap */
+      
+      }
+      
+    </style>
+    
+  <!-- do not change anything below, there be the borg here -->
+  
+  <style>
+  
+    .ProductItem:not( .one-left ):not( .sold-out ) .ProductItem-details .ProductItem-details-checkout {
+    
+      display : grid;
+      gap : var( --twc-spdproq-gap );
+      grid-template-columns : repeat( 5, 1fr );
+      
+      }
+      
+    .ProductItem:not( .one-left ):not( .sold-out ) .ProductItem-details .ProductItem-details-checkout .product-variants {
+    
+      display : -webkit-box;
+      display : -ms-flexbox;
+      display : flex;
+      
+      -webkit-box-orient : vertical;
+      -webkit-box-direction : normal;
+      -ms-flex-direction : column;
+      flex-direction : column;
+      
+      gap : var( --twc-spdproq-gap );
+      
+      }
+      
+    .ProductItem:not( .one-left ):not( .sold-out ) .ProductItem-details .ProductItem-details-checkout > *,
+    .ProductItem:not( .one-left ):not( .sold-out ) .ProductItem-details .ProductItem-details-checkout .variant-option,
+    .ProductItem:not( .one-left ):not( .sold-out ) .ProductItem-details .ProductItem-details-checkout .product-price
+    
+      {
+      
+        margin : 0 !important;
+        width : unset !important;
+        
+        }
+        
+    .ProductItem:not( .one-left ):not( .sold-out ) .ProductItem-details .ProductItem-details-checkout > * {
+    
+      grid-column : 1 / 6;
+      
+      }
+      
+    @media screen and ( min-width : 768px ) {
+    
+      .ProductItem:not( .one-left ):not( .sold-out ) .ProductItem-details .ProductItem-details-excerpt {
+      
+        grid-row : 1 / 2;
+        
+        }
+        
+      .ProductItem:not( .one-left ):not( .sold-out ) .ProductItem-details .product-quantity-input {
+      
+        grid-column : 1 / 2;
+        
+        }
+        
+      .ProductItem:not( .one-left ):not( .sold-out ) .ProductItem-details .ProductItem-product-price {
+
+        align-self : center;
+        grid-column : 2 / -1;
+        grid-row : 3;
+        margin-top : 1em !important;
+        
+        }
+        
+      }
+      
+    </style>
+    
+  <!-- end store page detail price right of quantity -->
