@@ -1,0 +1,97 @@
+<!--
+
+  begin payment processor icons try to make height similar
+  
+  Version       : 0.1.0
+  
+  SS Versions   : 7.1, 7.0
+  
+  v7.1
+  Fluid
+  Engine
+  Compatible    : Yes
+  
+  Dependencies  : payment processor icons
+  
+  Note          : the code is comprised of a style and div tag. both are needed
+                  for the full effect to work
+  
+  Copyright     : 2024 Thomas Creedon
+                  
+                  Tom's Web Consulting < http://www.tomsWeb.consulting/ >
+  
+  no user serviceable parts below
+  
+  -->
+  
+  <style>
+  
+    .twc-ppi-icon svg {
+    
+      width : unset !important;
+      
+      }
+      
+    </style>
+    
+  <script>
+  
+    ( ( ) => {
+    
+      const callback = ( event ) => {
+      
+        const callback = ( element ) => {
+        
+          const width = Math.ceil (
+          
+            element
+            
+              .getBBox ( )
+              
+              .width
+              
+            );
+            
+          element
+          
+            .parentElement
+            
+            .style
+            
+            .setProperty (
+            
+              'width',
+              
+              `${ width }px`,
+              
+              'important'
+              
+              );
+              
+          };
+          
+        const selector = '.twc-ppi-icon use';
+        
+        [
+        
+          ...
+          
+          document
+          
+            .querySelectorAll ( selector )
+            
+          ]
+          
+          .filter ( e => e.checkVisibility ( ) )
+          
+          .forEach ( callback );
+          
+        };
+        
+      addEventListener ( 'DOMContentLoaded', callback );
+      
+      } ) ( );
+      
+    </script>
+    
+  <!-- end payment processor icons try to make height similar -->
