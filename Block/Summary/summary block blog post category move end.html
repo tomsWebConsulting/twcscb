@@ -1,0 +1,282 @@
+<!--
+
+  begin summary block blog post category move end
+  
+  License       : < http://tinyurl.com/bdhte7xp >
+  
+  Version       : 0.2.0
+  
+  SS Versions   : 7.1, 7.0
+  
+  v7.1
+  Fluid
+  Engine
+  Compatible    : Yes
+  
+  Notes         : the code only supports one category. design wall is not
+                  supported
+  
+  Copyright     : 2025 Thomas Creedon
+                  
+                  Tom's Web Consulting < http://www.tomsWeb.consulting/ >
+  
+  -->
+  
+  <script>
+  
+    // initialize twc module
+    
+    window.twc = ( ( self ) => self ) ( window.twc || { } );
+    
+    // initialize twc sbbpcme sub-module
+    
+    twc.sbbpcme = ( ( self ) => self ) ( twc.sbbpcme || {
+    
+      /*
+      
+        enter block ids for each block you want to target. an empty array means
+        all will be targeted. the format of each line is a block id. if add no
+        block ids then all summary blocks on the page will be processed
+        
+        */
+        
+      blockIds : [
+      
+        /*
+        
+          following is an example line. copy the example line below and paste
+          after the example line. remove '// ' at beginning of pasted line.
+          repeat for as many summary blocks you want to process
+          
+          */
+          
+        // '[ enter block id here between single quotes replacing square brackets ]',
+        
+        ],
+        
+      category : '[ enter category here between single quotes replacing square brackets ]',
+      
+      /*
+      
+        dispatch a resize event. values are false or true. in some cases you may
+        not need to dispatch the resize event. i suggest trying the false value
+        and see how the summary block layout looks, if it looks good leave the
+        value set to false
+        
+        */
+        
+      resizeEvent : true
+      
+      } );
+      
+    </script>
+    
+  <!-- do not change anything below, there be the borg here -->
+  
+  <script>
+  
+    ( ( ) => {
+    
+      const
+      
+        version = '0.2.0',
+        
+        s = `
+        
+          Summary Block Blog Post Category Move End v${ version }
+          
+          © 2025 Thomas Creedon
+          
+          Tom's Web Consulting < http://www.tomsWeb.consulting >
+          
+          `
+          
+          .replace ( /^\s+/gm, '' );
+          
+      console.log ( s );
+      
+      const callback = ( ) => {
+      
+        const
+        
+          callback = ( summaryItemListElement ) => {
+          
+            const
+            
+              xPathExpression = `
+              
+                .//span [
+                
+                  contains (
+                  
+                    concat (
+                    
+                      " ",
+                      
+                      normalize-space ( @class ),
+                      
+                      " "
+                      
+                      ),
+                      
+                    " summary-metadata-item--cats "
+                    
+                    )
+                    
+                  ]/a [
+                  
+                    contains (
+                    
+                      .,
+                      
+                      "${ twc.sbbpcme.category }"
+                      
+                      )
+                      
+                    ]/ancestor::div [
+                    
+                      contains (
+                      
+                        concat (
+                        
+                          " ",
+                          
+                          normalize-space ( @class ),
+                          
+                          " "
+                          
+                          ),
+                          
+                        " summary-item "
+                        
+                        )
+                        
+                      ]
+                      
+                `,
+                
+              xPathEvaluate = ( xPathExpression, contextNode ) => {
+              
+                const xPathResults = document
+                
+                  .evaluate (
+                  
+                    xPathExpression,
+                    
+                    contextNode,
+                    
+                    null,
+                    
+                    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+                    
+                    null
+                    
+                    );
+                    
+                return xPathResults;
+                
+                },
+                
+              xPathResults =
+              
+                xPathEvaluate ( xPathExpression, summaryItemListElement );
+                
+            for ( let i = 0; i < xPathResults.snapshotLength; i++ ) {
+            
+              const element = xPathResults
+              
+                .snapshotItem ( i );
+                
+              summaryItemListElement
+              
+                .appendChild ( element );
+                
+              }
+              
+            },
+            
+          selectorSuffix =
+          
+            ' [ class*="summary-block-collection-type-blog" ]' +
+            
+            // ' .summary-block-collection-type-blog-basic-grid' +
+            
+            // design wall not supported
+            
+            ':not( .summary-block-setting-design-autocolumns ) ' +
+            
+            '.summary-item-list';
+            
+        let
+        
+          b = twc
+          
+            .sbbpcme
+            
+            .blockIds
+            
+            .length,
+            
+          selector;
+          
+        if ( b ) {
+        
+          const
+          
+            callback = ( blockId ) => {
+            
+              if ( blockId [ 0 ] != '#' )
+              
+                blockId = '#' + blockId;
+                
+              blockId += selectorSuffix;
+              
+              return blockId;
+              
+              };
+              
+          selector = twc
+          
+            .sbbpcme
+            
+            .blockIds
+            
+            .map ( callback )
+            
+            .join ( ', ' );
+            
+          } else
+          
+            selector = '.sqs-block-summary-v2' + selectorSuffix;
+            
+        const elements = document
+        
+          .querySelectorAll ( selector );
+          
+        b = twc
+        
+          .sbbpcme
+          
+          .resizeEvent
+          
+          &&
+          
+          elements
+          
+            .length;
+            
+        elements.forEach ( callback );
+        
+        if ( b )
+        
+          dispatchEvent ( new Event ( 'resize' ) );
+          
+        };
+        
+      addEventListener ( 'DOMContentLoaded', callback );
+      
+      } ) ( );
+      
+    </script>
+    
+  <!-- end summary block blog post category move end -->
